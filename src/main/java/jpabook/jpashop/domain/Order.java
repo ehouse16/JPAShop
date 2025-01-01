@@ -1,7 +1,9 @@
 package jpabook.jpashop.domain;
 
 import jakarta.persistence.*;
+import lombok.AccessLevel;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.time.LocalDateTime;
@@ -11,6 +13,7 @@ import java.util.List;
 @Entity
 @Table(name = "orders")
 @Getter @Setter
+@NoArgsConstructor(access = AccessLevel.PROTECTED) //직접 생성 불가능하게.. Order order = new Order(); order.set 어쩌구 못하게끔 한다
 public class Order {
     @Id @GeneratedValue
     @Column(name = "order_id")
