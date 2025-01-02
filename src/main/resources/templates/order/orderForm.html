@@ -1,0 +1,47 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<th:block th:replace="~{fragments/header :: header}"></th:block>
+<!-- Bootstrap CSS CDN -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+<body>
+
+<div class="container">
+  <th:block th:replace="~{fragments/bodyHeader :: bodyHeader}"></th:block>
+
+  <form role="form" action="/order" method="post">
+
+    <div class="form-group">
+      <label for="member">주문회원</label>
+      <select name="memberId" id="member" class="form-control">
+        <option value="">회원선택</option>
+        <option th:each="member : ${members}"
+                th:value="${member.id}"
+                th:text="${member.name}" />
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label for="item">상품명</label>
+      <select name="itemId" id="item" class="form-control">
+        <option value="">상품선택</option>
+        <option th:each="item : ${items}"
+                th:value="${item.id}"
+                th:text="${item.name}" />
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label for="count">주문수량</label>
+      <input type="number" name="count" class="form-control" id="count" placeholder="주문 수량을 입력하세요">
+    </div>
+
+    <button type="submit" class="btn btn-primary">Submit</button>
+  </form>
+  <br/>
+  <th:block th:replace="~{fragments/footer :: footer}"></th:block>
+
+</div> <!-- /container -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+</html>
